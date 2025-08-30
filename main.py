@@ -24,7 +24,6 @@ out_label = args.outlabel
 
 print(f'script called with input file: {input_file}, output label: {out_label}')
 
-model = 'gemma3:4b-it-qat'
 with open("./input/system_prompt.txt", "r") as file:
     system_prompt = file.read()
 
@@ -35,6 +34,8 @@ print(f'full content read from {input_file}=>{full_content[:100]}...')
 
 with open("./input/config.json", "r") as file:
     config = json.load(file)
+
+model = config['model_name']
 
 def remove_extras(text):
     return text.strip().replace("\n", "").replace("```", '').replace('json','')
@@ -90,10 +91,13 @@ for triple in tqdm(all_triples):
     # Add edge with relation label
     G.add_edge(head, tail, relation=relation)
 
-net = Network(notebook=True, cdn_resources='in_line')
+net = Network(height='100%', width='100%', notebook=False)
 net.set_edge_smooth('dynamic')  # makes arrows smoother
 net.toggle_physics(True)        # allows interactive movement
 net.from_nx(G)
+
+template = net.templateEnv.get_template("template.html")
+net.template = template
 
 for edge in net.edges:
     edge['label'] = edge['relation']
