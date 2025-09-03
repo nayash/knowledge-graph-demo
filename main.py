@@ -8,7 +8,6 @@ import networkx as nx
 import matplotlib.pyplot as plt
 from tqdm import tqdm
 from pyvis.network import Network
-import networkx as nx
 
 # Create the parser
 parser = argparse.ArgumentParser(description="Script takes a text as input and forms a knowledge graph from it")
@@ -24,7 +23,7 @@ out_label = args.outlabel
 
 print(f'script called with input file: {input_file}, output label: {out_label}')
 
-with open("./input/system_prompt.txt", "r") as file:
+with open("./input/system-prompt-2.txt", "r") as file:
     system_prompt = file.read()
 
 with open(input_file, "r") as file:
@@ -91,7 +90,9 @@ for triple in tqdm(all_triples):
     # Add edge with relation label
     G.add_edge(head, tail, relation=relation)
 
-net = Network(height='100%', width='100%', notebook=False)
+save_obj(G, f"./output/{out_label}_nx_graph.pkl")
+
+net = Network(height='100vh', width='100%', notebook=False)
 net.set_edge_smooth('dynamic')  # makes arrows smoother
 net.toggle_physics(True)        # allows interactive movement
 net.from_nx(G)
