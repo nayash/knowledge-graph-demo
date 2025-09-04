@@ -8,6 +8,7 @@ import networkx as nx
 import matplotlib.pyplot as plt
 from tqdm import tqdm
 from pyvis.network import Network
+import os
 
 # Create the parser
 parser = argparse.ArgumentParser(description="Script takes a text as input and forms a knowledge graph from it")
@@ -53,6 +54,9 @@ def process_chunk(text, out):
     return response
 
 def save_obj(data, filename):
+    dirpath = os.path.dirname(filename)
+    if dirpath:
+        os.makedirs(dirpath, exist_ok=True)  # create parents if missing
     with open(filename, "wb") as f:
         pickle.dump(data, f)
 
@@ -90,7 +94,7 @@ for triple in tqdm(all_triples):
     # Add edge with relation label
     G.add_edge(head, tail, relation=relation)
 
-save_obj(G, f"./output/{out_label}_nx_graph.pkl")
+save_obj(G, f"./output/{out_label}/nx_graph.pkl")
 
 net = Network(height='100vh', width='100%', notebook=False)
 net.set_edge_smooth('dynamic')  # makes arrows smoother
@@ -103,5 +107,5 @@ net.template = template
 for edge in net.edges:
     edge['label'] = edge['relation']
 
-net.show(f"./output/graph_{out_label}.html")
-print(f"Graph saved to ./output/graph_{out_label}.html")
+net.show(f"./output/{out_label}/graph.html")
+print(f"Graph saved to ./output/{out_label}/graph.html")

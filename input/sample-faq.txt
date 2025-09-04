@@ -1,0 +1,29 @@
+1) What’s included in the box?
+Answer: Phone, USB-C cable, 30W charger, SIM eject tool, quick start guide, and a clear case.
+
+2) How do I set up the phone for the first time?
+Answer: Power on, follow the setup wizard, connect Wi-Fi, sign in to a cloud account, set a screen lock, and optionally restore data.
+
+3) How long does the battery last and how fast does it charge?
+Answer: Typical all-day battery under mixed use; 30W fast charging reaches about 50% in roughly 30 minutes.
+
+4) Is the phone water and dust resistant?
+Answer: Yes, it has an IP68 rating for dust tightness and water resistance under specific lab conditions.
+
+5) Can storage be expanded?
+Answer: Yes, microSD support up to 1 TB; cloud backup is available in Settings.
+
+6) What is the software update policy?
+Answer: Quarterly feature updates for 3 years and monthly security patches for 4 years via Settings > System > Software Update.
+
+7) Does it support two numbers and 5G?
+Answer: Yes, Dual SIM (nano SIM + eSIM) and 5G sub-6; VoLTE and Wi-Fi Calling depend on carrier support.
+
+8) How can I get great photos in low light?
+Answer: Enable Night Mode, hold steady, wait for processing; use Pro Mode and consider RAW for advanced control.
+
+9) What biometric options are available?
+Answer: In-display fingerprint and secure face unlock; biometric data stays in a secure enclave on the device.
+
+10) What are the warranty and support options?
+Answer: One-year limited hardware warranty with optional extended coverage; 24/7 chat support and an on-device Care app for diagnostics.
