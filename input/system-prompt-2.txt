@@ -34,11 +34,15 @@ Document level: allow cross-sentence relations when clearly expressed, but don�
 
 No invention: only extract facts explicitly stated or safely normalized.
 
+“Cause/Enable” Relations: extract what action caused what and represent as entity-relation.
+
 Best-practice reminders
 
 Prefer verb-centric predicates; convert nominalizations to verbs where possible.
 
 Keep entities and relations concise and unambiguous.
+
+extract as many high quality relations as possible.
 
 Use English throughout.
 
