@@ -69,27 +69,27 @@ for i in tqdm(range(0, len(sentences), batch_size)):
     paragraph = ".".join(batch)
     process_chunk(paragraph, all_triples)
     if i % 100:
-        save_obj(all_triples, f"./output/{out_label}_all_triples.pkl")
+        save_obj(all_triples, f"./output/{out_label}/all_triples.pkl")
 
 print(f'{len(all_triples)} triples found')
-save_obj(all_triples, f"./output/{out_label}_all_triples.pkl")
+save_obj(all_triples, f"./output/{out_label}/all_triples.pkl")
 
 
 G = nx.MultiDiGraph()
 
 # Add nodes and edges
 for triple in tqdm(all_triples):
-    head = triple['head_entity']['entity']
+    head = triple['head_entity']['entity'].lower()
     if 'tail_entity' in triple:
-        tail = triple['tail_entity']['entity']
+        tail = triple['tail_entity']['entity'].lower()
     else:
         tail = "null"
         print(f'triple with no tail entity: {triple}')
-    relation = triple['relation']['relation']
+    relation = triple['relation']['relation'].lower()
     
     # Add nodes with attributes if available
-    G.add_node(head, attr=triple['head_entity']['attribute'])
-    G.add_node(tail, attr=triple['tail_entity']['attribute'] if 'tail_entity' in triple and 'attribute' in triple['tail_entity'] else "")
+    G.add_node(head, attr=triple['head_entity']['attribute'].lower() if 'head_entity' in triple and 'attribute' in triple['head_entity'] else "")
+    G.add_node(tail, attr=triple['tail_entity']['attribute'].lower() if 'tail_entity' in triple and 'attribute' in triple['tail_entity'] else "")
     
     # Add edge with relation label
     G.add_edge(head, tail, relation=relation)
